@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+
+    <h1>User Portfolio</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Symbol</th>
+                <th scope="col">Shares</th>
+                <th scope="col">Current Price</th>
+                <th scope="col">Total Value of Holdings</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for share in user_portfolio %}
+                <tr>
+                    <td>{{ share["symbol"] }}</td>
+                    <td>{{ share["shares"] }}</td>
+                    <td>{{ share["current_stock_price"] | usd }}</td>
+                    <td>{{ share["current_value"] | usd }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Cash Balance</th>
+                <th scope="col">Grand Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for share in user_portfolio %}
+                <tr>
+                    <td>{{ user_cash }}</td>
+                    <td>{{ user_net_worth }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

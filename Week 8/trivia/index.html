@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // Wait for Document Object Model to load
+            document.addEventListener('DOMContentLoaded', function() {
+
+                // Q1
+                // Change colour of botton to green when correct answer and show feedback
+                let correctanswer = document.querySelector('.correct');
+
+                correctanswer.addEventListener('click', function() {
+                    correctanswer.style.backgroundColor = 'green';
+                    document.querySelector('#Answer1Response').innerHTML = 'Correct Answer!';
+                });
+
+                // Change colour of botton to red when correct answer and show feedback
+                let wronganswers = document.querySelectorAll('.incorrect');
+
+                for (let i = 0; i < wronganswers.length; i++) {
+                    wronganswers[i].addEventListener('click', function() {
+                        wronganswers[i].style.backgroundColor = 'red';
+                        document.querySelector('#Answer1Response').innerHTML = 'Wrong Answer!';
+                    });
+                }
+
+                // Q2
+                document.querySelector('#CheckAnswer2').addEventListener('click', function() {
+                    let input = document.querySelector('input');
+
+                    if (input.value == 'Canada') {
+                        input.style.backgroundColor = 'green';
+                        document.querySelector('#Answer2Response').innerHTML = 'Correct Answer!';
+                    } else {
+                        input.style.backgroundColor = 'red';
+                        document.querySelector('#Answer2Response').innerHTML = 'Wrong Answer!';
+                    }
+                });
+            });
+
+
+        </script>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+
+                <h3>Which animal has the fastest punch in the world?</h3>
+
+                <button class="incorrect"> Cheetah </button>
+                <button class="incorrect"> Koala </button>
+                <button class="incorrect"> Black Bear </button>
+                <button class="correct"> Rainbow Mantis Shrimp </button>
+
+                <p id="Answer1Response"></p>
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>Which country is famous for its maple syrup, moose and beaver tails?</h3>
+                <input autocomplete="off" type="text"> </input>
+                <button id="CheckAnswer2"> Check answer </button>
+
+                <p id="Answer2Response"></p>
+
+            </div>
+        </div>
+    </body>
+
+</html>
