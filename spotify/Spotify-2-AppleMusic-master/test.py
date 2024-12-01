@@ -95,7 +95,7 @@ def retrieve_apple_songID(songsList):
     # Once all the recognition is done, read the IDs from CSV and return
     with open('AppleSongID.csv', mode ='r') as file:
         df = pandas.read_csv(file)
-        appleSongIDList = df.AppleSongID
+        appleSongIDList = df[['AppleSongID', 'title']]
     return appleSongIDList
 
 # Function to get browser coordinates from user
