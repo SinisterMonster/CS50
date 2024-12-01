@@ -1,13 +1,14 @@
 import requests
 import csv
 import time
-import pyautogui
+#import pyautogui
 import pandas
-import easygui
+from easygui import multenterbox, fileopenbox
 
 def main():
         
-    spotifyCSV = 'spotify.csv'
+    spotifyCSV= fileopenbox(msg="Choose your Spotify playlist csv")
+    #spotifyCSV = 'spotify.csv'
 
     # Call function to get list of search terms from Spotify playlist
     songsList = spotify_playlist_reader(spotifyCSV)
@@ -15,8 +16,11 @@ def main():
     # Call the function to get corresponding Apple Song ID
     appleSongIDList = retrieve_apple_songID(songsList)
 
-    # Call function to get Firrefox coordinates
-    coordinates = get_firefox_coordinates()
+    # Call function to get browser coordinates
+    #coordinates = get_firefox_coordinates()
+
+    # Call function to write songs to AM
+    write_songs_to_apple_music(appleSongIDList)
 
 # Function that reads Spotify playlist and returns song list
 def spotify_playlist_reader(spotifyCSV):
@@ -96,20 +100,38 @@ def retrieve_apple_songID(songsList):
 
 # Function to get browser coordinates from user
 def get_firefox_coordinates():
-    print ('Before coninuing:\nFollow steps in Instructions.txt to get coordinates of the POST request body and SEND button')
+    print ('Before coninuing:\nFollow steps in Instructions.txt to get coordinates of the POST request body and SEND button of your browser')
     
     # Get those coordinates from user
-msg = "Enter your personal information"
-title = "Credit Card Application"
-fieldNames = ["Name","Street Address","City","State","ZipCode"]
-fieldValues = []  # we start with blanks for the values
-fieldValues = multenterbox(msg,title, fieldNames)
+    msg = "Enter browser coordinates"
+    title = "Browser coordinates"
+    fieldNames = ["POST Key x","POST Key y","SEND button x","SEND button y"]
+    coordinates = []
+    coordinates = multenterbox(msg, title, fieldNames)
 
-# make sure that none of the fields was left blank
+    # make sure that none of the fields was left blank
+    while True:
+        if coordinates == None: 
+            break
+        errormsg = ""
+        for i in range(len(fieldNames)):
+            if coordinates[i].strip() == "":
+                errormsg = errormsg + ('"%s" is a required integer field.\n\n' % fieldNames[i])
+        if errormsg == "": break # no problems found
+        coordinates = multenterbox(errormsg, title, fieldNames, coordinates)
 
+    return coordinates
 
 # Function that that takes AM songID and adds them to AM playlist
 def write_songs_to_apple_music(appleSongIDList):
+
+    # Notify user
+    input('Press Enter to start adding the identified songs to Apple Music playlist...')
+    print('Starting in 5 seconds...')
+    time.sleep(5)
+
+    for songID in appleSongIDList:
+        print(songID)
 
     return None
 
