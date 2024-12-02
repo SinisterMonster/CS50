@@ -1,9 +1,10 @@
 # SPOTIFY TO APPLE MUSIC TRANSFER TOOL
+## LINKS
 #### Video Project Introduction: https://youtu.be/KPafML5UjuA
 #### Video Demo Part 1 - Finding coordinates of POST and SEND:  https://youtu.be/dklv2hH9PsA
 #### Video Demo Part 2 - Project in action:  https://youtu.be/GxLMj8egJDA
 
-
+## DESCRIPTION
 #### Problem Description:
 
 - Wanted to move from Spotify to Apple Music due to recent multiple cost increase
@@ -125,3 +126,12 @@ for i in range(len(appleSongIDList)):
     pyautogui.click(int(coordinates[2]), int(coordinates[3]))
     time.sleep(2)
 ~~~
+
+## LIMITATIONS
+The following are some of the limitations I identified during testing and its mostly centered around detection of SongID's. 
+- Song discovery algorithm isnt perfect. During testing it only detected 50-60% of songs
+- If the name of the song has special characters, especially commas, it doesnt work. This is because I use cvs for logging- This is a future improvement action for me
+- Some songs dont have an exact match and I havent figured out how to handle them yet
+
+## DISCLAIMER
+I dont think anyone will use this unpolished tool I made for myself and a friend but please test it on a smaller scale before you get 100 Katy Perry's Chained to the Rhythm in one playlist (this may or may not have happened to me). I take no responsibility for the damage this causes to your song collection but feedback on how to improve this is most welcome :)
