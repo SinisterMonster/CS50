@@ -1,6 +1,0 @@
-requests
-csv
-time
-pyautogui
-pandas
-easygui

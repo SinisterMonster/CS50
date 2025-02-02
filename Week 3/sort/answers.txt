@@ -1,0 +1,17 @@
+sort1 uses:
+Bubble sort
+
+How do you know?:
+It sorted 'sorted50000.txt' the fastest (omega is lowest, n) but was the much slower for random and reversed (since it has to move everything in reversed)
+
+sort2 uses:
+Merge sort
+
+How do you know?:
+It was the best overall but slightly slower on the sorted50000.txt (since sigma is nlogn vs n for bubble sort)
+
+sort3 uses:
+Selection sort
+
+How do you know?:
+Slowest overall but . Selection sort should have the worst time for both worst and best case scenario

@@ -1,0 +1,17 @@
+Stats from the database:
+Avg valence = 0.484443
+Avg energy = 0.65906
+Avg danceability = 0.71646
+
+I think this is how Spotify might characterrize a persons 'aura':
+Purple -High danceability and valence?
+Green - High valence and low energy (maybe high tempo?)
+Pink - Low valence and low danceability
+Orange -Avg energy is highest of 3 stats
+Yellow - Avg valence is highest of 3 stats
+Blue - Avg valence and danceability low (maybe <50%?)
+
+Why is this not verry representative of a person?
+Because music taste change over time and based on what a person might feel throughout the day.
+More over if they are just considering straight average without a measure of spread, then the resulting
+data will be skewed
